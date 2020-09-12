@@ -21,7 +21,7 @@ void quick_sort(int q[], int l, int r)
         do
             j--;
         while (q[j] > x);
-        if (i < j)
+        if (i < j) // 使这个排序稳定
             swap(q[i], q[j]);
     }
 
@@ -39,6 +39,6 @@ int main()
 
     for (int i = 0; i < n; i++)
     {
-        printf("%d", q[i]);
+        printf("%d ", q[i]);
     }
 }
