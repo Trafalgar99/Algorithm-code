@@ -1,5 +1,6 @@
 bool check(int);
 
+// 整数二分
 int bsearch_1(int l, int r)
 {
     while (l < r)
@@ -25,3 +26,5 @@ int bsearch_1(int l, int r)
     }
     return l;
 }
+
+// 浮点数二分
