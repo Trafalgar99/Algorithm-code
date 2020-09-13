@@ -1,4 +1,5 @@
 (function () {
+  // 快速排序
   function swap(arr, i, j) {
     let c = arr[i];
     arr[i] = arr[j];
@@ -20,6 +21,7 @@
     quickSort(arr, l, j), quickSort(arr, j + 1, r);
   }
 
+  //归并排序
   let merge_tmp = [];
   function mergeSort(arr, l, r) {
     if (l >= r) return;
@@ -37,6 +39,38 @@
 
     for (let i = l, j = 0; i <= r; i++, j++) arr[i] = merge_tmp[j];
   }
+
+  // 二分查找
+  function bsearch_1(l, r) {
+    while (l < r) {
+      mid = (l + r) >> 1;
+      if (check(mid)) r = mid;
+      else l = mid + 1;
+    }
+    return l;
+  }
+
+  function bsearch_1(l, r) {
+    while (l < r) {
+      mid = (l + r + 1) >> 1;
+      if (check(mid)) l = mid;
+      else r = mid - 1;
+    }
+    return l;
+  }
+
+  /*
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   *
+   */
 
   //test
   arr = [3, 1, 2, 4, 5];
