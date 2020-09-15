@@ -29,7 +29,8 @@ vector<int> sub(vector<int> &A, vector<int> &B)
     }
     //去除前导零
     while (C.size() > 1 && C.back() == 0)
-        C.pop_back() return C;
+        C.pop_back();
+    return C;
 }
 
 int main()
