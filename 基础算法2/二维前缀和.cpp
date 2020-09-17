@@ -9,7 +9,7 @@ int a[N][N], s[N][N];
 int main()
 {
     scanf("%d%d%d", &n, &m, &q);
-    for (int i = 1, i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
         for (int j = 1; j <= m; j++)
         {
