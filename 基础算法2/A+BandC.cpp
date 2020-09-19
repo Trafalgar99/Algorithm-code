@@ -85,6 +85,7 @@ int main()
 
         vector<int> AaB = add(A, B), AsB = sub(A, B);
         if (!aIsNeg && !bIsNeg)
+            ;
     }
 
     return 0;

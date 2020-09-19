@@ -16,7 +16,6 @@ int main()
     while (m--)
     {
         int x;
-        scanf("%d", &x);
 
         int l = 0, r = n - 1;
         while (l < r)
