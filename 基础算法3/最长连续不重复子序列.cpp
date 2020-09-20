@@ -15,7 +15,7 @@ int main()
         cin >> a[i];
     }
     int res = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0, j = 0; i < n; i++)
     {
         s[a[i]]++;
         while (s[a[i]] > 1)
