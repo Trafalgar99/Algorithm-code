@@ -1,4 +1,4 @@
-// https: // www.acwing.com/problem/content/description/792/
+# https: // www.acwing.com/problem/content/description/792/
 
 n = float(input())
 l, r = -10000, 10000.0
