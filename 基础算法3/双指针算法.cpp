@@ -14,7 +14,7 @@ int main()
     {
         int j = i;
         while (j < n && str[i] != ' ')
-            cout << str[k];
+            cout << str[i++];
         cout << endl;
 
         i = j;

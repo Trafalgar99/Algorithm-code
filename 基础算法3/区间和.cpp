@@ -71,3 +71,17 @@ int main()
     }
     return 0;
 }
+
+//实现STL unique函数
+
+vector<int>::iterator unique(vector<int> &a)
+{
+    int j = 0;
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (!i || a[i] != a[i - 1])
+            a[j++] = a[i];
+    }
+    // a[0] -- a[j-1] are unique
+    return a.begin() + j;
+}
