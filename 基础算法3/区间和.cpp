@@ -14,14 +14,14 @@ int a[N], s[N];
 vector<int> alls;
 vector<PII> add, query;
 
-int find(int x)
+int find(int x) //在一个按数值大小排好序的数组里查找给定元素的下标
 {
     int l = 0, r = alls.size() - 1;
     while (l < r)
     {
         int mid = l + r >> 1;
         if (alls[mid] >= x)
-            r = x;
+            r = mid;
         else
             l = mid + 1;
     }
@@ -79,7 +79,7 @@ vector<int>::iterator unique(vector<int> &a)
     int j = 0;
     for (int i = 0; i < a.size(); i++)
     {
-        if (!i || a[i] != a[i - 1])
+        if (i == 0 || a[i] != a[i - 1])
             a[j++] = a[i];
     }
     // a[0] -- a[j-1] are unique
