@@ -11,16 +11,15 @@ int main()
 {
     cin >> n;
     for (int i = 0; i < n; i++)
-    {
         cin >> a[i];
-    }
+
     int res = 0;
     for (int i = 0, j = 0; i < n; i++)
     {
-        s[a[i]]++;
-        while (s[a[i]] > 1)
+        s[a[i]]++;          //记录每个数出现的次数
+        while (s[a[i]] > 1) //如果数字重复
         {
-            s[a[j]]--;
+            s[a[j]]--; //j向右移，缩短区间长度，数字出现次数减一
             j++;
         }
         res = max(res, i - j + 1);
