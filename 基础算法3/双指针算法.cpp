@@ -1,3 +1,5 @@
+//给定一个字符串，将其每个单词输出
+
 #include <iostream>
 #include <cstring>
 
@@ -14,7 +16,11 @@ int main()
     {
         int j = i;
         while (j < n && str[i] != ' ')
-            cout << str[i++];
+            j++;
+
+        //这道题目的具体逻辑
+        for (int k = i; k < j; k++)
+            cout << str[k];
         cout << endl;
 
         i = j;
