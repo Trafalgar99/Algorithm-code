@@ -21,17 +21,15 @@ void merge(vector<PII> &segs)
     {
         if (ed < seg.first) //发现一个新区间
         {
-            if (st != -2e9)
-            {
+            if (st != -2e9) //第一个区间不算
                 res.push_back({st, ed});
-                st = seg.first, ed = seg.second;
-            }
+            st = seg.first, ed = seg.second;
         }
         else
             ed = max(ed, seg.second);
     }
-    if (st != -2e9)
-        res.push_back({st, ed});
+    if (st != -2e9)              //防止传入空区间
+        res.push_back({st, ed}); //将最后一个区间推入
     segs = res;
 }
 
