@@ -84,3 +84,5 @@ q[hh]
 ![](image/2020-09-23-21-15-44.png)
 
 ## kmp
+
+[acwing kmp 匹配](https://www.acwing.com/solution/content/7977/)
