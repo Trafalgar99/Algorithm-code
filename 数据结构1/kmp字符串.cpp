@@ -20,7 +20,7 @@ int main()
     {
         while (j && p[i] != p[j + 1])
             j = ne[j];
-        if (p[j] == p[j + 1])
+        if (p[i] == p[j + 1])
             j++;
         ne[i] = j;
     }
