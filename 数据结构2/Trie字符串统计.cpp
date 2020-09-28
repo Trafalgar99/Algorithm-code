@@ -9,7 +9,7 @@ char str[N];
 
 void insert(char str[])
 {
-    int p = 0; //初始节点
+    int p = 0; //初始节点 当前节点
     for (int i = 0; str[i]; i++)
     {
         int u = str[i] - 'a'; //字母映射数字
