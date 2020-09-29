@@ -21,6 +21,27 @@ px 是 x 的集合编号，py 是 y 的集合编号。合并：p[x] = y;
 
 优化 q2：当一个节点查询完集合编号时，将其在查询时所经过的路径上的所有的节点直接连到祖先节点下面（`路径压缩`）
 
-[836. 合并集合](https://www.acwing.com/problem/content/838/)
+[836.合并集合](https://www.acwing.com/problem/content/838/)
+[AcWing 837.连通块中点的数量](https://www.acwing.com/solution/content/18132/)
+[240.食物链](https://www.acwing.com/problem/content/242/)
 
 # 堆
+
+堆是一棵完全二叉树
+
+小根堆--> 每个节点都小于自己的子结点--> 根节点是最小值 大根堆
+
+`堆的操作`
+
+1. 插入一个数 heap[++size]=x;up(size);
+2. 求集合当中的最小值 heap[1];
+3. 删除最小值 heap[1]=heap[size];size--;down(1);
+4. 删除任意一个元素 heap[k]=heap[size];size--;down(k);up(k);
+5. 修改任意一个元素 heap[k]=x;down(k);up(k);
+   down(x) up(x)
+
+`堆的存储`
+
+数组模拟 根节点编号为 1 ，编号为 x 的左子节点 2x，编号为 x 的右子节点 2x+1
+
+[838. 堆排序](https://www.acwing.com/problem/content/840/)
