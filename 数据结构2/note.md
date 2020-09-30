@@ -45,3 +45,4 @@ px 是 x 的集合编号，py 是 y 的集合编号。合并：p[x] = y;
 数组模拟 根节点编号为 1 ，编号为 x 的左子节点 2x，编号为 x 的右子节点 2x+1
 
 [838. 堆排序](https://www.acwing.com/problem/content/840/)
+[AcWing 839. 模拟堆](https://www.acwing.com/solution/content/5143/)

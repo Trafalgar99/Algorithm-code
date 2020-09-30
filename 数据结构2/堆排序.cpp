@@ -19,6 +19,14 @@ void down(int u)
         swap(h[u], h[t]);
     down(t);
 }
+void up(int u)
+{
+    while (u / 2 && h[u / 2] > h[u])
+    {
+        swap(h[u / 2], h[u]);
+        u /= 2;
+    }
+}
 
 int main()
 {
