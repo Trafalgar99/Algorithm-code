@@ -30,7 +30,7 @@ void up(int u)
 
 int main()
 {
-    cin >> n;
+    cin >> n >> m;
     for (int i = 1; i <= n; i++)
         cin >> h[i];
     size1 = n;

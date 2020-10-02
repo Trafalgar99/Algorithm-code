@@ -20,7 +20,7 @@ int main()
     scanf("%d%d", &n, &m);
 
     for (int i = 1; i <= n; i++)
-        p[i] = i;
+        p[i] = i; //初始时每个元素各自为一个集合
 
     while (m--)
     {
