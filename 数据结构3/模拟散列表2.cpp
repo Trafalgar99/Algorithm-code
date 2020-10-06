@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const int N = 200003, null = 0x3f3f3f3f; //十万零三是大于十万的第一个质数
+const int N = 200003, null = 0x3f3f3f3f; //二十万零三是大于二十万的第一个质数
 
 int h[N]; //
 

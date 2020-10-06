@@ -14,7 +14,8 @@ void insert(int x)
     int k = (x % N + N) % N; //保证结果一定是正数
     e[idx] = x;
     ne[idx] = h[k]; //h[k]存的是k对应的链的第一个元素的数组下标
-    h[k] = idx++;
+    h[k] = idx;
+    idx++;
 }
 
 bool find(int x)
