@@ -1,0 +1,7 @@
+[786. 第 k 个数](https://www.acwing.com/problem/content/788/)
+[AcWing 788. 逆序对的数量](https://www.acwing.com/solution/content/2103/)
+[790. 数的三次方根](https://www.acwing.com/problem/content/792/)
+[795. 前缀和 ](https://www.acwing.com/solution/content/2075/)
+[796. 子矩阵的和 ](https://www.acwing.com/solution/content/10780/)
+[797. 差分](https://www.acwing.com/problem/content/799/)
+[798. 差分矩阵](https://www.acwing.com/solution/content/2137/)

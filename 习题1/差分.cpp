@@ -20,6 +20,7 @@ int main()
         cin >> a[i];
     for (int i = 1; i <= n; i++)
         insert(i, i, a[i]);
+
     while (m--)
     {
         int l, r, c;
@@ -32,8 +33,5 @@ int main()
 
     for (int i = 1; i <= n; i++)
         cout << a[i] << " ";
-
     cout << endl;
-
-    return 0;
 }
