@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 const int N = 100010;
@@ -21,7 +20,6 @@ int main()
         while (hh <= tt && a[q[tt]] >= a[i])
             tt--;
         q[++tt] = i;
-
         if (i >= k - 1)
             cout << a[q[hh]] << " ";
     }
