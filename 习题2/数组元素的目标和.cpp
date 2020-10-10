@@ -1,4 +1,6 @@
 #include <iostream>
+#include <algorithm>
+
 using namespace std;
 
 const int N = 100010;
@@ -11,7 +13,7 @@ int main()
     cin >> n >> m >> x;
     for (int i = 0; i < n; i++)
         cin >> a[i];
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < m; i++)
         cin >> b[i];
 
     for (int i = 0, j = m - 1; i < n; i++)
@@ -24,4 +26,5 @@ int main()
             break;
         }
     }
+    return 0;
 }
