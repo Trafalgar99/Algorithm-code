@@ -12,9 +12,9 @@ int son[M][2], idx;
 void insert(int x)
 {
     int p = 0;
-    for (int i = 30; i >= 0; i--)
+    for (int i = 30; i >= 0; i--) //有符号数第一位是符号数
     {
-        int u = x >> i & 1;
+        int u = x >> i & 1; //lowbit
         if (!son[p][u])
             son[p][u] = ++idx;
         p = son[p][u];
@@ -48,13 +48,14 @@ int main()
         cin >> a[i];
 
     int res = 0;
+
     for (int i = 0; i < n; i++)
     {
         insert(a[i]);
         int t = query(a[i]);
         res = max(res, a[i] ^ t);
     }
-    cout << res << endl;
 
+    cout << res;
     return 0;
 }
