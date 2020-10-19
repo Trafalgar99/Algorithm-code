@@ -20,7 +20,6 @@ void insert(int x)
         p = son[p][u];
     }
 }
-
 int query(int x)
 {
     int p = 0, res = 0;
@@ -46,7 +45,6 @@ int main()
     cin >> n;
     for (int i = 0; i < n; i++)
         cin >> a[i];
-
     int res = 0;
     for (int i = 0; i < n; i++)
     {
@@ -54,7 +52,6 @@ int main()
         int t = query(a[i]);
         res = max(res, a[i] ^ t);
     }
-    cout << res << endl;
-
+    cout << res;
     return 0;
 }
