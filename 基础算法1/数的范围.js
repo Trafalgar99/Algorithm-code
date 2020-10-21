@@ -10,32 +10,34 @@ let q = [];
 rl.on("line", (data) => {
   if (n === 0) {
     [n, k] = data.split(" ").map((i) => +i);
-  } else {
-    main(data);
+  } else if (q.length === 0) {
+    q = data.split(" ").map((i) => +i);
+  } else if (k--) {
+    main(parseInt(data));
   }
 });
 
-function main(data) {
-  q = data.split(" ").map((i) => +i);
-  console.log(quick_find(0, n - 1, k));
-}
-
-function quick_find(l, r, k) {
-  if (l >= r) return q[l];
-  let x = q[l],
-    i = l - 1,
-    j = r + 1;
-  while (i < j) {
-    while (q[++i] < x);
-    while (q[--j] > x);
-    if (i < j) swap(i, j);
+//--------------------------------------------------------
+function main(x) {
+  let res = "";
+  let l = 0,
+    r = n - 1;
+  while (l < r) {
+    let mid = (l + r) >> 1;
+    if (q[mid] >= x) r = mid;
+    else l = mid + 1;
   }
-  let sl = j - l + 1;
-  return k <= sl ? quick_find(l, j, k) : quick_find(j + 1, r, k - sl);
-}
-
-function swap(a, b) {
-  let x = q[a];
-  q[a] = q[b];
-  q[b] = x;
+  if (q[l] != x) console.log("-1 -1");
+  else {
+    res = res + l + " ";
+    let a = 0,
+      r = n - 1;
+    while (a < r) {
+      let mid = (a + r + 1) >> 1;
+      if (q[mid] <= x) a = mid;
+      else r = mid - 1;
+    }
+    res += a;
+    console.log(res);
+  }
 }

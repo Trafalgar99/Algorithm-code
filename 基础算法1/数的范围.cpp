@@ -1,39 +1,48 @@
+// https://www.acwing.com/problem/content/791/
 #include <iostream>
 
 using namespace std;
 
-const int N = 100010;
+const int N = 1000010;
 
-int n, k;
+int n, m;
 int q[N];
-
-int quick_sort(int l, int r, int k)
-{
-    if (l == r)
-        return q[l];
-    int x = q[l], i = l - 1, j = r + 1;
-    while (i < j)
-    {
-        while (q[++i] < x)
-            ;
-        while (q[--j] > x)
-            ;
-        if (i < j)
-            swap(q[i], q[j]);
-    }
-    int sl = j - l + 1;
-    if (k <= sl)
-        return quick_sort(l, j, k);
-    return quick_sort(j + 1, r, k - sl);
-}
 
 int main()
 {
-    cin >> n >> k;
+    scanf("%d%d", &n, &m);
     for (int i = 0; i < n; i++)
-        cin >> q[i];
+        scanf("%d", &q[i]);
+    while (m--)
+    {
+        int x;
+        scanf("%d", &x);
 
-    cout << quick_sort(0, n - 1, k) << endl;
-
+        int l = 0, r = n - 1;
+        while (l < r)
+        {
+            int mid = l + r >> 1;
+            if (q[mid] >= x)
+                r = mid;
+            else
+                l = mid + 1;
+        }
+        if (q[l] != x)
+            cout << "-1 -1" << endl;
+        else
+        {
+            cout << l << " ";
+            int l = 0, r = n - 1;
+            while (l < r)
+            {
+                int mid = l + r + 1 >> 1;
+                if (q[mid] <= x)
+                    l = mid;
+                else
+                    r = mid - 1;
+            }
+            cout << l << endl;
+        }
+    }
     return 0;
 }
