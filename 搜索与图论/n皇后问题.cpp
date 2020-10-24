@@ -6,12 +6,11 @@ const int N = 20;
 
 int n;
 char g[N][N];
-int path[N];
-bool col[N], deg[N], udg[N];
+bool col[N], deg[N], udeg[N];
 
-void dfs(int u)
+void dfs(int x)
 {
-    if (u == n)
+    if (x == n)
     {
         for (int i = 0; i < n; i++)
             puts(g[i]);
@@ -20,24 +19,21 @@ void dfs(int u)
     }
     for (int i = 0; i < n; i++)
     {
-        if (!col[i] && !deg[i + u] && !udg[n - u + i])
+        if (!col[i] && !deg[x + i] && !udeg[n - x + i])
         {
-            g[u][i] = 'Q';
-            col[i] = deg[u + i] = udg[n - u + i] = true;
-            dfs(u + 1);
-            col[i] = deg[u + i] = udg[n - u + i] = false;
-            g[u][i] = '.';
+            g[x][i] = 'Q';
+            col[i] = deg[x + i] = udeg[n - x + i] = true;
+            dfs(x + 1);
+            col[i] = deg[x + i] = udeg[n - x + i] = false;
+            g[x][i] = '.';
         }
     }
 }
 
 int main()
 {
-    cin >> n;
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
             g[i][j] = '.';
-    dfs(0);
-
     return 0;
 }
