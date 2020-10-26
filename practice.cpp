@@ -1,58 +1,48 @@
-#include <cstring>
-#include <iostream>
-#include <algorithm>
+#include <vector>
 
 using namespace std;
 
-const int N = 100010;
-
-int n, m;
-int h[N], e[N], ne[N], idx;
-int q[N], d[N];
-
-void add(int a, int b)
+class Solution
 {
-    e[idx] = b;
-    ne[idx] = h[a];
-    h[a] = idx++;
-}
+public:
+    int d[1000][1000] = {-1};
 
-bool topSort()
-{
-    int hh = 0, tt = -1;
-    for (int i = 0; i < n; i++)
-        if (!d[i])
-            q[++tt] = i;
-    while (hh <= tt)
+    pair<int, int> q[1000 * 1000];
+    vector<vector<int>> updateMatrix(vector<vector<int>> &matrix)
     {
-        int t = q[hh++];
-        for (int i = h[t]; i != -1; i = ne[i])
+        int hh = 0, tt = 0;
+        int n = matrix.size();
+        vector<vector<int>> ans(n);
+        q[0] = {0, 0};
+        int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+        while (hh <= tt)
         {
-            int j = e[i];
-            d[j]--;
-            if (d[j] == 0)
-                q[++tt] = j;
+            auto t = q[hh++];
+            for (int i = 0; i < 4; i++)
+            {
+                int x = t.first + dx[i], y = t.second + dy[i];
+                if (x >= 0 && x < n && y >= 0 && y < n && d[x][y] == -1)
+                {
+                    if (matrix[x][y] == 0)
+                    {
+                        d[x][y] = 0;
+                        d[t.first][t.second] = 0 + matrix[t.first][t.second];
+                    }
+                    else
+                    {
+                        d[t.first][t.second] = d[t.first][t.second] + matrix[x][y];
+                    }
+                    q[++tt] = {x, y};
+                }
+            }
         }
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+            {
+                if (d[i][j] == -1)
+                    d[i][j] = 0;
+                ans[i].push_back(d[i][j]);
+            }
+        return ans;
     }
-
-    return tt == n - 1;
-}
-
-int main()
-{
-    cin >> n >> m;
-    memset(h, -1, sizeof h);
-
-    for (int i = 0; i < m; i++)
-    {
-        int a, b;
-        cin >> a >> b;
-        add(a, b);
-        d[b]++;
-    }
-    if (topSort())
-    {
-    }
-    else
-        puts("-1");
-}
+};

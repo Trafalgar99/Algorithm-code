@@ -44,7 +44,6 @@ int main()
     cin >> n >> m;
 
     memset(h, -1, sizeof h);
-
     for (int i = 0; i < m; i++)
     {
         int a, b;
