@@ -25,3 +25,6 @@
 [AcWing 有向图的拓扑序列](https://www.acwing.com/solution/content/4196/)
 
 有向无环图一定存在拓扑序列  故其也称为 拓扑图
+
+
+入度  出度
