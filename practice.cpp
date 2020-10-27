@@ -1,48 +1,59 @@
-#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+#include <queue>
 
 using namespace std;
 
-class Solution
+int bfs(string start)
 {
-public:
-    int d[1000][1000] = {-1};
+    string end = "12345678x";
+    queue<string> q;
+    q.push(start);
+    unordered_map<string, int> d;
+    d[start] = 1;
 
-    pair<int, int> q[1000 * 1000];
-    vector<vector<int>> updateMatrix(vector<vector<int>> &matrix)
+    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+
+    while (q.size())
     {
-        int hh = 0, tt = 0;
-        int n = matrix.size();
-        vector<vector<int>> ans(n);
-        q[0] = {0, 0};
-        int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-        while (hh <= tt)
+        auto t = q.front();
+        q.pop();
+        if (t == end)
+            return d[t];
+
+        int distance = d[t];
+
+        int k = t.find('x');
+        int x = k / 3, y = k % 3;
+
+        for (int i = 0; i < 4; i++)
         {
-            auto t = q[hh++];
-            for (int i = 0; i < 4; i++)
+            int a = x + dx[i], b = y + dy[i];
+            if (a >= 0 && a < 3 && b >= 0 && b < 3)
             {
-                int x = t.first + dx[i], y = t.second + dy[i];
-                if (x >= 0 && x < n && y >= 0 && y < n && d[x][y] == -1)
+                swap(t[k], t[a * 3 + b]);
+                if (!d.count(t))
                 {
-                    if (matrix[x][y] == 0)
-                    {
-                        d[x][y] = 0;
-                        d[t.first][t.second] = 0 + matrix[t.first][t.second];
-                    }
-                    else
-                    {
-                        d[t.first][t.second] = d[t.first][t.second] + matrix[x][y];
-                    }
-                    q[++tt] = {x, y};
+                    q.push(t);
+                    d[t] = distance + 1;
                 }
+                swap(t[k], t[a * 3 + b]);
             }
         }
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-            {
-                if (d[i][j] == -1)
-                    d[i][j] = 0;
-                ans[i].push_back(d[i][j]);
-            }
-        return ans;
     }
-};
+    return -1;
+}
+
+int main()
+{
+    string start;
+    for (int i = 0; i < 9; i++)
+    {
+        char c;
+        cin >> c;
+        start += c;
+    }
+
+    cout << bfs(start) << endl;
+}
