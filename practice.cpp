@@ -1,58 +1,50 @@
 #include <iostream>
+#include <cstring>
 #include <algorithm>
-#include <queue>
-#include <unordered_map>
 
 using namespace std;
 
-int bfs(string start)
+const int N = 510;
+
+int n, m;
+
+int g[N][N];
+int dist[N];
+bool st[N];
+
+int dijstra()
 {
-    string end = "12345678x";
-    queue<string> q;
-    q.push(start);
-    unordered_map<string, int> d;
-    d[start] = 0;
-
-    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-
-    while (q.size())
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] = 0;
+    for (int i = 0; i < n; i++)
     {
-        auto t = q.front();
-        q.pop();
+        int t = -1;
+        for (int j = 1; j <= n; j++)
+            if (!st[N] && (t == -1 || dist[t] > dist[j]))
+                t = j;
 
-        if (t == end)
-            return d[t];
+        st[t] = true;
+        if (t == n)
+            break;
 
-        int distance = d[t];
-        int k = t.find('x');
-        int x = k / 3, y = k % 3;
-        for (int i = 0; i < 4; i++)
-        {
-            int a = x + dx[i], b = y + dy[i];
-            if (a >= 0 && a < 3 && b >= 0 && b < 3)
-            {
-                swap(t[k], t[a * 3 + b]);
-                if (!d.count(t))
-                {
-                    q.push(t);
-                    d[t] = distance + 1;
-                }
-                swap(t[k], t[a * 3 + b]);
-            }
-        }
+        for (int j = 1; j <= n; j++)
+            dist[j] = min(dist[j], dist[t] + g[t][j]);
     }
-    return -1;
+    if (dist[n] == 0x3f3f3f3f)
+        return -1;
+    return dist[n];
 }
 
 int main()
 {
-    string start;
-    for (int i = 0; i < 9; i++)
+    memset(g, 0x3f, sizeof g);
+    cin >> n >> m;
+    while (m--)
     {
-        char c;
-        cin >> c;
-        start += c;
+        int a, b, c;
+        cin >> a >> b >> c;
+        g[a][b] = min(g[a][b], c);
     }
 
-    cout << bfs(start) << endl;
+    cout << dijstra() << endl;
 }

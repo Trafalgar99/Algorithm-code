@@ -7,7 +7,7 @@ using namespace std;
 const int N = 510;
 
 int n, m;
-int g[N][N]; //邻接矩阵用于存储稠密图
+int g[N][N]; //邻接矩阵用于存储稠密图的权边
 int dist[N]; //存储每个点到原点的最近距离
 bool st[N];  // 每个点是否已经找到最短路径
 
