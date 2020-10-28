@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
-#include <unordered_map>
 #include <queue>
+#include <unordered_map>
 
 using namespace std;
 
@@ -11,7 +11,7 @@ int bfs(string start)
     queue<string> q;
     q.push(start);
     unordered_map<string, int> d;
-    d[start] = 1;
+    d[start] = 0;
 
     int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 
@@ -19,14 +19,13 @@ int bfs(string start)
     {
         auto t = q.front();
         q.pop();
+
         if (t == end)
             return d[t];
 
         int distance = d[t];
-
         int k = t.find('x');
         int x = k / 3, y = k % 3;
-
         for (int i = 0; i < 4; i++)
         {
             int a = x + dx[i], b = y + dy[i];
