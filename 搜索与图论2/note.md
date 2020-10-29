@@ -27,3 +27,17 @@ set s --- 当前已经确定最短距离的点
    不在s中的，距离最近的点->t
    t -> s
    用t更新其他点的距离 （判断dist[x]>dist[t]+w）
+
+
+
+### Bellman-Ford算法
+    for n 次
+        for 所有边 a--w->b  --->(松弛操作)
+                dist[b] = min(dist[b],dist[a]+w);
+存储边：struct{int a,b,w} 
+
+
+
+循环结束后 对所有边都满足 dist[b]<=dist[a]+w  ---> 三角不等式
+
+[](https://www.acwing.com/problem/content/855/)
