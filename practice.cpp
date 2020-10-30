@@ -1,48 +1,72 @@
 #include <iostream>
 #include <cstring>
 #include <algorithm>
+#include <queue>
 
 using namespace std;
 
-const int N = 510;
+const int N = 150010;
+
+typedef pair<int, int> PII;
 
 int n, m;
-int g[N][N];
-int dist[N];
+int h[N], e[N], ne[N], w[N], idx;
 bool st[N];
+int dist[N];
 
-int dijstra()
+void add(int a, int b, int c)
 {
-    dist[1] = 0;
+    e[idx] = b;
+    ne[idx] = h[a];
+    w[idx] = c;
+    h[a] = idx++;
+}
 
-    for (int i = 0; i < n; i++)
+int dijkstra()
+{
+    memset(dist, 0x3f, sizeof dist);
+    priority_queue<PII, vector<PII>, greater<PII>> heap;
+    heap.push({0, 1});
+
+    while (heap.size())
     {
-        int t = -1;
-        for (int j = 1; j <= n; j++)
-            if (!st[j] && (t == -1 || dist[t] > dist[j]))
-                t = j;
-        st[t] = true;
-        if (t == n)
-            break;
+        auto t = heap.top();
+        heap.pop();
 
-        for (int j = 1; j <= n; j++)
-            dist[j] = min(dist[j], dist[t] + g[t][j]);
+        int ver = t.second, d = t.first;
+
+        if (ver == n)
+            break;
+        if (st[ver])
+            continue;
+        st[ver] = true;
+
+        for (int i = h[ver]; i != -1; i = ne[i])
+        {
+            int j = e[i];
+            if (dist[j] > d + w[j])
+            {
+                dist[j] = d + w[j];
+                heap.push({dist[j], j});
+            }
+        }
     }
-    return dist[n] == 0x3f3f3f3f ? -1 : dist[n];
+    if (dist[n] == 0x3f3f3f3f)
+        return -1;
+    return dist[n];
 }
 
 int main()
 {
     cin >> n >> m;
-    memset(g, 0x3f, sizeof g);
-    memset(dist, 0x3f, sizeof dist);
+
+    memset(h, -1, sizeof h);
 
     while (m--)
     {
         int a, b, c;
         cin >> a >> b >> c;
-        g[a][b] = min(g[a][b], c);
+        add(a, b, c);
     }
-    cout << dijstra() << endl;
-    return 0;
+    cout << dijkstra() << endl;
 }

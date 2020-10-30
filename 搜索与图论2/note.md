@@ -41,3 +41,7 @@ set s --- 当前已经确定最短距离的点
 循环结束后 对所有边都满足 dist[b]<=dist[a]+w  ---> 三角不等式
 
 [](https://www.acwing.com/problem/content/855/)
+
+### SPFA 算法       
+
+[851. spfa求最短路](https://www.acwing.com/problem/content/853/)

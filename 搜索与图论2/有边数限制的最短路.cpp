@@ -42,14 +42,14 @@ int main()
         int a, b, w;
         cin >> a >> b >> w;
         edges[i] = {a, b, w};
-
-        int t = bellman_ford();
-
-        if (t == -1)
-            puts("impossible");
-        else
-            cout << t << endl;
-
-        return 0;
     }
+
+    int t = bellman_ford();
+
+    if (t == -1)
+        puts("impossible");
+    else
+        cout << t << endl;
+
+    return 0;
 }
