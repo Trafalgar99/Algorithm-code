@@ -42,6 +42,17 @@ set s --- 当前已经确定最短距离的点
 
 [](https://www.acwing.com/problem/content/855/)
 
-### SPFA 算法       
+### SPFA 算法    (Shortest Path Faster Algorithm)    
 
 [851. spfa求最短路](https://www.acwing.com/problem/content/853/)
+
+
+### 找负环
+![](image/2020-10-31-09-49-02.png)
+[AcWing 852. spfa判断负环](https://www.acwing.com/solution/content/6975/)
+
+### Floyd算法
+
+[AcWing 854. Floyd求最短路](https://www.acwing.com/solution/content/6976/)
+
+![](image/2020-10-31-10-34-12.png)
