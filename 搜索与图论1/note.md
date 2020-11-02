@@ -19,7 +19,7 @@
 [排列数字](https://www.acwing.com/solution/content/8496/)
 [n皇后](https://www.acwing.com/problem/content/845/)
 [Acwing 走迷宫](https://www.acwing.com/solution/content/2078/)
-[八数码](https://www.acwing.com/problem/content/181/)
+[八数码](https://www.acwing.com/problem/content/847/)
 [AcWing 树的重心](https://www.acwing.com/solution/content/18704/)
 [AcWing 图中点的层次](https://www.acwing.com/solution/content/13591/)
 [AcWing 有向图的拓扑序列](https://www.acwing.com/solution/content/4196/)

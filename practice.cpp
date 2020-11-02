@@ -1,74 +1,48 @@
 #include <iostream>
 #include <cstring>
-#include <queue>
+#include <algorithm>
 
 using namespace std;
 
-const int N = 1e5 + 10;
+const int N = 510, M = 10010;
 
-int n, m;
-int h[N], e[N], ne[N], w[N], idx;
-int dist[N];
-int st[N];
-
-void add(int a, int b, int c)
+int n, m, k;
+int dist[N], backup[N];
+struct
 {
-    e[idx] = b;
-    ne[idx] = h[a];
-    w[idx] = c;
-    h[a] = idx++;
-}
+    int a, b, w;
+} edges[M];
 
-int spfa()
+int bellman_ford()
 {
     memset(dist, 0x3f, sizeof dist);
     dist[1] = 0;
-    queue<int> q;
-    q.push(1);
-    st[1] = true;
-
-    while (q.size())
+    for (int i = 0; i < k; i++)
     {
-        int t = q.front();
-        q.pop();
-        st[t] = false;
-
-        for (int i = h[t]; i != -1; i = ne[i])
+        memcpy(backup, dist, sizeof dist);
+        for (int j = 0; j < m; j++)
         {
-            int j = e[i];
-            if (dist[j] > dist[t] + w[i])
-            {
-                dist[j] = dist[t] + w[i];
-                if (!st[j])
-                {
-                    st[j] = true;
-                    q.push(j);
-                }
-            }
+            int a = edges[j].a, b = edges[j].b, w = edges[k].w;
+            dist[b] = min(dist[b], backup[a] + w);
         }
     }
-    if (dist[n] == 0x3f3f3f3f)
+    if (dist[n] > 0x3f3f3f3f / 2)
         return -1;
-    return dist[n];
+    else
+        return dist[n];
 }
-
 int main()
 {
-    memset(h, -1, sizeof h);
-    cin >> n >> m;
-    while (m--)
+    cin >> n >> m >> k;
+    for (int i = 0; i < m; i++)
     {
         int a, b, c;
         cin >> a >> b >> c;
-        add(a, b, c);
+        edges[i] = {a, b, c};
     }
-
-    int t = spfa();
-
+    int t = bellman_ford();
     if (t == -1)
-        puts("impossible");
+        puts("-1");
     else
         cout << t << endl;
-
-    return 0;
 }
