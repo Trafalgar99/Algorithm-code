@@ -32,7 +32,7 @@ int main()
     {
         int a, b, w;
         cin >> a >> b >> w;
-        d[a][b] = min(d[a][b], w);
+        d[a][b] = min(d[a][b], w); //去除重边
     }
 
     floyd();

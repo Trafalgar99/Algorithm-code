@@ -22,6 +22,8 @@ void add(int a, int b, int c)
 
 int spfa()
 {
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] = 0;
     queue<int> q; //队列存储路径变短的点
 
     //为了找到初始点到达不了的负环，需要一开始就把所有点都放到队列里
