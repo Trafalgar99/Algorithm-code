@@ -7,7 +7,7 @@ const int N = 1000010;
 
 int primes[N], cnt;
 bool st[N];
-
+//埃氏筛
 void get_primes(int n)
 {
     for (int i = 2; i <= n; i++)
@@ -20,7 +20,8 @@ void get_primes(int n)
         }
     }
 }
-void get_prime(int n)
+//欧拉筛
+void get_primes2(int n)
 {
     for (int i = 2; i <= n; i++)
     {
