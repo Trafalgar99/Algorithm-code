@@ -1,9 +1,10 @@
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 
 using namespace std;
 
-const int N = 1e5 + 10, M = 2 * N;
+const int N = 510, M = 100010;
 
 int n1, n2, m;
 int h[N], e[M], ne[M], idx;
@@ -23,6 +24,7 @@ bool find(int x)
         int j = e[i];
         if (!st[j])
         {
+            st[j] = true;
             if (match[j] == 0 || find(match[j]))
             {
                 match[j] = x;
@@ -34,6 +36,7 @@ bool find(int x)
 }
 int main()
 {
+    memset(h, -1, sizeof h);
     cin >> n1 >> n2 >> m;
     while (m--)
     {
@@ -48,5 +51,5 @@ int main()
         if (find(i))
             res++;
     }
-    cout << res << endl;
+    return 0;
 }
