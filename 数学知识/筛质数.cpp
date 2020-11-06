@@ -14,9 +14,9 @@ void get_primes(int n)
     {
         if (!st[i])
         {
-            primes[cnt++] = n;
-            for (int j = i + i; j <= n; j += i)
-                st[j] = true;
+            primes[cnt++] = i;
+            for (int j = i + i; j <= n; j += i) //筛掉i的所有倍数
+                st[j] = true;                   //表名j被筛掉了
         }
     }
 }
