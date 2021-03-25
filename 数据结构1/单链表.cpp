@@ -67,7 +67,7 @@ int main()
         }
     }
 
-    for (int i = head; i != -1; i = ne[1])
+    for (int i = head; i != -1; i = ne[i])
     {
         cout << e[i] << ' ';
     }

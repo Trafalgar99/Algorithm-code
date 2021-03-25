@@ -16,8 +16,10 @@ void down(int u)
     if (u * 2 + 1 <= size1 && h[u * 2 + 1] < h[t])
         t = u * 2 + 1;
     if (u != t)
+    {
         swap(h[u], h[t]);
-    down(t);
+        down(t);
+    }
 }
 void up(int u)
 {
